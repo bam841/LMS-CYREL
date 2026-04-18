@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS-CYREL Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        
+        <aside class="sidebar">
+            <div class="sidebar-profile">
+                <div class="profile-img-wrapper">
+                    <img src="cyrel-removebg-preview.png" alt="Profile" id="sidebar_avatar">
+                </div>
+                <h2 id="admin_name">STUDENT NAME</h2>
+                <p id="admin_role">STUDENT </p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="active">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#">
+                    <span class="icon">📁</span> Reports
+                </a>
+                <a href="#">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+                <a href="#">
+                    <span class="icon">👥</span> Users
+                </a>
+                <a href="#">
+                    <span class="icon">🗺️</span> Maps
+                </a>
+                <a href="#" class="logout-link">
+                    <span class="icon">🚪</span> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="topbar">
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-btn">🔔</button>
+                    <img src="placeholder-avatar.png" alt="Profile" class="topbar-avatar" id="topbar_avatar">
+                </div>
+            </header>
+
+            <section class="hero-banner">
+                <div class="hero-text">
+                    <h1>Dashboard Overview</h1>
+                    <p>See the data</p>
+                </div>
+                <div class="hero-image-placeholder">
+                    <span>[Illustration Here]</span>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon users-icon">👥</div>
+                        <span class="stat-change text-green" id="change_users">+234</span>
+                    </div>
+                    <p class="stat-title">Number of User</p>
+                    <h2 class="stat-value" id="total_users"></h2>
+                    <div class="stat-chart-placeholder green-line"></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon uploads-icon">⬆️</div>
+                        <span class="stat-change text-green" id="change_uploads">+12</span>
+                    </div>
+                    <p class="stat-title">Uploads</p>
+                    <h2 class="stat-value" id="total_uploads"></h2>
+                    <div class="stat-chart-placeholder green-line"></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon downloads-icon">⬇️</div>
+                        <span class="stat-change text-red" id="change_downloads">-23</span>
+                    </div>
+                    <p class="stat-title">Downloaded</p>
+                    <h2 class="stat-value" id="total_downloads"></h2>
+                    <div class="stat-chart-placeholder red-line"></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon visits-icon">👁️</div>
+                        <span class="stat-change text-green" id="change_visits"></span>
+                    </div>
+                    <p class="stat-title">Total Visit</p>
+                    <h2 class="stat-value" id="total_visits"></h2>
+                    <div class="stat-chart-placeholder green-line"></div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

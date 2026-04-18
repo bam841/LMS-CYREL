@@ -1,10 +1,52 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cyrel Learning Center - Sign In</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="logpage.css">
 </head>
 <body>
-    
+    <div class="container">
+        
+        <div class="left-panel">
+            <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+                <div class="logo-outer-ring"></div>
+                
+            </div>
+            
+            <div class="illustration">
+                <div class="illustration-overlay"></div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="form-container">
+                <h1>Sign-In</h1>
+                <p class="subtitle">Welcome! Choose your role<br>to continue</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="username" placeholder="e.g.(clc_dagatan2024)">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon" style="background: #e74c3c; color: white; padding: 6px; border-radius: 50%; font-size: 10px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; left: 10px;"></i>
+                            <input type="password" id="password" placeholder="**********">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
