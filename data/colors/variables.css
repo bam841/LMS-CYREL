@@ -1,0 +1,46 @@
+:root {
+    /* --- VIBRANT THEME --- */
+    --vibrant-brand-primary-50: #FDF0F0;
+    --vibrant-brand-primary-100: #F5D0D0;
+    --vibrant-brand-primary-200: #E8A0A0;
+    --vibrant-brand-primary-400: #C45858;
+    --vibrant-brand-primary-600: #7A1414;
+    --vibrant-brand-primary-800: #5C0E0E;
+    --vibrant-brand-primary-900: #3D0909;
+
+    --vibrant-brand-accent-50: #FDF8E8;
+    --vibrant-brand-accent-100: #FAF0C0;
+    --vibrant-brand-accent-200: #F0D878;
+    --vibrant-brand-accent-400: #D4B040;
+    --vibrant-brand-accent-600: #C9A227;
+    --vibrant-brand-accent-800: #8A6E18;
+    --vibrant-brand-accent-900: #5A480F;
+
+    --vibrant-semantic-success-bg: #EEF6ED;
+    --vibrant-semantic-success-text: #254824;
+    --vibrant-semantic-danger-base: #C45858;
+    
+    --vibrant-surface-page: #FAF6F6;
+    --vibrant-surface-card: #FFFFFF;
+    
+    --vibrant-text-primary: #2E1C1C;
+    --vibrant-text-on-dark: #FFFFFF;
+
+    /* --- REFINED THEME --- */
+    --refined-brand-primary-50: #FAF3F4;
+    --refined-brand-primary-600: #7B3040;
+    --refined-brand-primary-900: #3C1020;
+
+    --refined-brand-accent-400: #C0A84A;
+    --refined-brand-accent-600: #A68B2E;
+
+    --refined-surface-page: #F8F4F4;
+    --refined-text-primary: #2C2022;
+    
+    /* --- SHARED / DEFAULT ALIASES --- */
+    /* This makes it easy to switch themes later by only changing these lines */
+    --brand-primary: var(--vibrant-brand-primary-600);
+    --brand-accent: var(--vibrant-brand-accent-400);
+    --bg-page: var(--vibrant-surface-page);
+    --text-main: var(--vibrant-text-primary);
+}
