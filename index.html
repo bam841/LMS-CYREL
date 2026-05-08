@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLC.LMS - Log In</title>
+    <style>
+        /* inter font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        .root-frame { /* Main container for the entire page layout */
+            display: flex;
+            flex-direction: row;
+            background: #FFF;
+            height: 100vh; /* Make root-frame take full viewport height */
+            padding: 10px 0; /* Add vertical padding for the panels */
+            box-sizing: border-box; /* Include padding in the height calculation */
+        }
+
+        .left-panel-fx {
+            position: absolute;
+            width: 698px;
+            height: auto;
+        }
+
+        .left-panel{
+            /* Removed absolute positioning to allow flex layout */
+            margin-top: 0; /* Handled by root-frame padding */
+            margin-left: 5%; /* Horizontal offset */
+            width: 650px;
+            height: 95vh; 
+            background: linear-gradient(180deg, #CD0F0F 0%, #7A1414 100%);
+            border-radius: 35px;
+            filter: drop-shadow(6px 6px 15.6px rgba(0, 0, 0, 0.25));
+            overflow: hidden; /* Keeps the noise effect inside the rounded corners */
+        }
+
+        .left-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.15; /* Adjust this to make the noise more or less visible */
+            mix-blend-mode: overlay; /* Blends the noise nicely with the red background */
+            pointer-events: none; /* Ensures the noise layer doesn't block mouse clicks */
+        }
+
+
+        .gradient-pop-effect {
+            position: absolute;
+            opacity: 0.5;
+            top: 30%;
+            left: 40%;
+            width: 132.969px;
+            height: 690.26px;
+            transform: rotate(-90.142deg);
+            border-radius: 690.26px;
+            background: radial-gradient(50% 50% at 50% 50%, #D9D9D9 0%, rgba(217, 217, 217, 0.00) 100%);
+            filter: blur(90px);
+        }
+
+        .hero-basic {
+            position: absolute;
+            top: 20%; /* Adjust this value (e.g., 50px, 15%) to control the vertical offset */
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content; /* CSS equivalent to your original 'wrap-content' */
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .title-wrapper {
+            align-self: stretch;
+            color: var(--Vibrant-Brand-Primary-50, #FDF0F0);
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 40px;
+            line-height: 120%; /* 60px */
+            letter-spacing: -1.5px;
+        }
+
+        #title{
+            font-weight: 500;
+        }
+
+        #title-accent{
+            color: var(--Vibrant-Brand-Primary-50, #FDF0F0);
+            font-family: 'Inter', sans-serif;
+            font-weight: 150;
+            font-size: 40px;
+            line-height: 120%;
+            letter-spacing: -1.5px;
+        }
+
+        .subtitle {
+            align-self: stretch;
+            color: var(--Vibrant-Brand-Primary-200, #E8A0A0);
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 200;
+            font-size: 28px;
+            font-style: normal;
+            line-height: 120%; /* 33.6px */
+        }
+
+        .bg-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* noise overlay */
+        .bg-fill svg { 
+            opacity: 0.45;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bg-fill-mask {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .bg-img {            
+            filter: brightness(80%) contrast(150%) saturate(85%); 
+            opacity: .4;
+            width: 100%;
+            height: auto;
+            display: block; /* Removes the tiny invisible gap below inline images */   
+        }
+
+        .fx-bg {
+            width: 636px;
+            padding: 0 0.75px 0 1.508px;
+            display: flex; /* Added to enable justify-content and align-items */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bfly-fx{
+            position: absolute;
+            margin-top: 35rem;
+            right: 0rem;
+        }
+
+        /* input field bg */
+        .form-log-in{
+            /* layout */
+            position: relative;
+            width: 400px;
+            height: 400px;
+            padding: 1px 27px 43px 27px;
+            
+            /* flexbox for form elements */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+
+            /* style */
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.40);
+            background: rgba(255, 255, 255, 0.40);
+            box-shadow: 5px 7px 12px 0 rgba(0, 0, 0, 0.10);
+            backdrop-filter: blur(12px);
+        }
+
+        .form-login-panel{
+            flex: 1; /* Takes up remaining horizontal space */
+            height: 100%; /* Matches the height of the left-panel (100% of root-frame's content height) */
+            margin-top: 0rem; /* Aligns with the top of the left-panel */
+            display: flex; /* Enable flexbox for internal layout */
+            flex-direction: column; /* Stack children vertically */
+            justify-content: flex-start; /* Push content to the bottom */
+            align-items: center; /* Center content horizontally */
+        }
+
+        .hero-basic{
+            position: relative;
+        }
+
+        .hero-basic h1{
+            color: #878787;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 30px;
+            line-height: 120%;
+        }
+</style>
+</head>
+
+<body>
+    <div class="root-frame">
+
+        
+            
+            <div class = "left-panel">
+                <div class="bg-fill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none">
+                        <g filter="url(#filter0_dn_10_902)">
+                            <rect x="0" y="0" width="100%" height="100%" fill="url(#paint0_linear_10_902)" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_dn_10_902" x="-10%" y="-10%" width="120%" height="120%"
+                                color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                    result="hardAlpha" />
+                                <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_10_902" />
+                                <feOffset dx="6" dy="6" />
+                                <feGaussianBlur stdDeviation="7.8" />
+                                <feComposite in2="hardAlpha" operator="out" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_10_902" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                                <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise"
+                                    seed="4944" />
+                                <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+                                <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+                                    <feFuncA type="discrete"
+                                        tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 " />
+                                </feComponentTransfer>
+                                <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+                                <feFlood flood-color="rgba(0, 0, 0, 0.15)" result="color1Flood" />
+                                <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+                                <feMerge result="effect2_noise_10_902">
+                                    <feMergeNode in="shape" />
+                                    <feMergeNode in="color1" />
+                                </feMerge>
+                                <feBlend mode="normal" in="effect2_noise_10_902" in2="effect1_dropShadow_10_902"
+                                    result="effect2_noise_10_902" />
+                            </filter>
+                            <linearGradient id="paint0_linear_10_902" x1="50%" y1="0%" x2="50%" y2="100%">
+                                <stop stop-color="#CD0F0F" />
+                                <stop offset="1" stop-color="#7A1414" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- noise overlay -->
+                <div class="bg-fill-mask">
+                    <img class ="bg-img" src="/assets/img/pages/index/bg-image.png" alt = "Background Image">
+                </div>
+
+                <!-- white light -->
+                <div class ="gradient-pop-effect"></div>
+                
+                <div class="hero-basic">
+                    <img src="assets/img/logo/clc-logo.png" alt = "logo">
+                    <div class="text-content">
+                        <div class="title-wrapper">
+                            <span id="title">Cyrel Learning Center </span>
+                            <span id="title-accent">LMS</span>
+                        </div>
+                        <span class="subtitle">Let's Get you Started</span>      
+                    </div>
+                </div>
+
+
+            </div>
+        
+
+        <div class="form-login-panel">
+            
+            <!-- gfx bg -->
+            <div class="fx-bg">
+
+                <div class="bfly-fx">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="622" height="420" viewBox="0 0 622 420" fill="none">
+                        <g filter="url(#filter0_f_161_807)">
+                            <path
+                                d="M206.584 86.8019C192.47 96.0972 185.766 105.706 187.615 113.99C189.464 122.275 199.75 128.723 216.722 132.236C233.693 135.749 256.3 136.109 280.69 133.255C305.081 130.401 329.745 124.51 350.481 116.586C371.216 108.661 386.741 99.193 394.409 89.7949C402.077 80.3969 401.414 71.6502 392.533 65.0454C383.652 58.4405 367.102 54.386 345.704 53.5728C324.306 52.7596 299.383 55.2379 275.182 60.5855L290.092 87.9998C294.609 87.0016 299.261 86.539 303.255 86.6908C307.249 86.8426 310.338 87.5994 311.996 88.8322C313.654 90.0651 313.777 91.6977 312.346 93.4519C310.915 95.2061 308.017 96.9733 304.147 98.4525C300.276 99.9317 295.673 101.031 291.12 101.564C286.567 102.097 282.348 102.029 279.18 101.374C276.012 100.718 274.092 99.5145 273.747 97.9681C273.402 96.4217 274.653 94.6283 277.288 92.8932L206.584 86.8019Z"
+                                fill="#C9A227" />
+                            <path
+                                d="M223.107 191.891C213.728 183.837 206.056 174.472 201.231 165.189C196.405 155.906 194.685 147.2 196.324 140.365C197.964 133.53 202.877 128.931 210.332 127.252C217.787 125.572 227.386 126.902 237.704 131.044C248.021 135.186 258.506 141.918 267.598 150.24C276.691 158.562 283.907 168.029 288.174 177.235C292.44 186.441 293.53 194.893 291.28 201.337C289.03 207.78 283.561 211.869 275.686 212.998L250.504 178.692C252.106 178.463 253.219 177.631 253.677 176.32C254.134 175.009 253.913 173.289 253.045 171.416C252.177 169.543 250.709 167.617 248.859 165.924C247.008 164.231 244.875 162.861 242.776 162.018C240.677 161.176 238.724 160.905 237.207 161.247C235.69 161.588 234.691 162.524 234.357 163.915C234.024 165.305 234.374 167.077 235.355 168.965C236.337 170.854 237.898 172.76 239.806 174.398L223.107 191.891Z"
+                                fill="#E8A0A0" />
+                            <path
+                                d="M134.579 177.641C81.2268 178.43 30.2603 167.264 20.7419 152.702C11.2236 138.14 46.7578 125.695 100.11 124.906C153.462 124.118 204.429 135.283 213.947 149.846C223.465 164.408 187.931 176.852 134.579 177.641Z"
+                                fill="#D9D9D9" />
+                            <path
+                                d="M113.184 70.6586C130.444 76.5587 148.28 81.3243 164.436 84.353C180.591 87.3816 194.341 88.5372 203.946 87.6736C213.551 86.81 218.58 83.966 218.397 79.5013C218.214 75.0365 212.828 69.1516 202.918 62.5906C193.009 56.0296 179.023 49.0872 162.727 42.6414C146.432 36.1956 128.559 30.5359 111.37 26.3779C94.1807 22.2199 78.4466 19.7504 66.1575 19.2818C53.8683 18.8131 45.576 20.3663 42.3292 23.7449L109.115 46.5738C109.877 45.7807 111.824 45.4161 114.708 45.5261C117.593 45.6361 121.286 46.2158 125.321 47.1918C129.356 48.1678 133.551 49.4963 137.376 51.0093C141.201 52.5224 144.484 54.1519 146.81 55.692C149.136 57.2321 150.401 58.6135 150.444 59.6615C150.487 60.7095 149.306 61.377 147.051 61.5797C144.797 61.7825 141.569 61.5112 137.777 60.8003C133.985 60.0894 129.798 58.9707 125.747 57.5858L113.184 70.6586Z"
+                                fill="#6AA464" />
+                            <path
+                                d="M413.633 310.375C433.584 312.568 450.935 311.671 462.727 307.835C474.519 303.999 480.023 297.463 478.302 289.339C476.581 281.216 467.741 272.009 453.288 263.286C438.835 254.563 419.664 246.865 399.04 241.502C378.417 236.14 357.617 233.445 340.186 233.877C322.755 234.31 309.77 237.842 303.444 243.873C297.118 249.904 297.843 258.06 305.495 266.951C313.146 275.843 327.251 284.92 345.406 292.635L380.776 276.414C377.388 274.973 374.755 273.279 373.327 271.62C371.899 269.96 371.763 268.438 372.944 267.312C374.125 266.186 376.548 265.527 379.802 265.446C383.056 265.365 386.938 265.868 390.788 266.869C394.637 267.87 398.215 269.307 400.913 270.935C403.611 272.564 405.261 274.282 405.582 275.798C405.903 277.315 404.876 278.535 402.675 279.251C400.474 279.967 397.235 280.134 393.511 279.725L413.633 310.375Z"
+                                fill="#C9A227" />
+                            <path
+                                d="M566.09 264.498C557.773 271.27 546.762 277.847 534.692 283.25C522.622 288.653 510.137 292.595 499.095 294.49C488.052 296.384 479.04 296.13 473.399 293.765C467.758 291.4 465.789 287.051 467.784 281.364C469.779 275.676 475.632 268.954 484.473 262.197C493.313 255.44 504.67 249.009 516.855 243.858C529.04 238.708 541.402 235.114 552.104 233.611C562.806 232.108 571.277 232.776 576.257 235.515L534.705 258.432C533.692 257.875 531.968 257.739 529.791 258.045C527.613 258.351 525.098 259.082 522.619 260.13C520.14 261.178 517.829 262.486 516.031 263.861C514.232 265.236 513.041 266.604 512.635 267.761C512.229 268.918 512.63 269.803 513.778 270.284C514.925 270.765 516.759 270.817 519.006 270.431C521.252 270.046 523.792 269.244 526.248 268.144C528.704 267.045 530.944 265.707 532.636 264.329L566.09 264.498Z"
+                                fill="#E8A0A0" />
+                            <path
+                                d="M581.243 305.349C604.59 326.467 608.824 351.091 590.699 360.349C572.574 369.608 538.955 359.994 515.607 338.877C492.26 317.759 488.026 293.135 506.151 283.877C524.276 274.618 557.896 284.232 581.243 305.349Z"
+                                fill="#D9D9D9" />
+                            <path
+                                d="M427.939 353.888C429.717 344.758 429.536 335.82 427.42 328.205C425.304 320.59 421.347 314.641 416.05 311.108C410.753 307.576 404.353 306.62 397.66 308.361C390.968 310.101 384.282 314.461 378.45 320.888C372.618 327.315 367.9 335.521 364.894 344.468C361.888 353.415 360.728 362.702 361.561 371.153C362.395 379.604 365.184 386.841 369.576 391.948C373.967 397.055 379.765 399.803 386.235 399.845L393.115 364.516C391.596 364.506 390.235 363.861 389.204 362.662C388.173 361.463 387.519 359.765 387.323 357.781C387.128 355.797 387.4 353.617 388.105 351.517C388.811 349.417 389.918 347.491 391.287 345.982C392.656 344.474 394.226 343.45 395.797 343.042C397.368 342.633 398.87 342.858 400.113 343.687C401.357 344.516 402.285 345.912 402.782 347.7C403.279 349.487 403.321 351.585 402.904 353.729L427.939 353.888Z"
+                                fill="#6AA464" />
+                        </g>
+                        <defs>
+                            <filter id="filter0_f_161_807" x="-4.95911e-05" y="-3.8147e-06" width="621.145" height="419.045"
+                                filterUnits="objectBoundingBox" x="-0.1" y="-0.1" width="1.2" height="1.2" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                                <feGaussianBlur stdDeviation="2.9" result="effect1_foregroundBlur_161_807" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+
+            </div>
+
+            <div class="hero-basic">
+                <h1>Who are you Signing as?</h1>
+            </div>
+
+            <div class="form-log-in">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="e.g. clc-dagatan@gmail.com">
+                
+                <label for="email">Password</label>
+                <input type="text" id="password" placeholder="e.g. clcdagatan2020">
+            
+                <button type="submit" id="submit-log-in">Sign In</button>
+                
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
